@@ -1,0 +1,80 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+function Home() {
+  return (
+    <div className="p-6">
+      <h1 className="text-4xl font-bold mb-4">Escola de Informática</h1>
+      <p className="text-lg">Bem-vindo à nossa escola de tecnologia! Oferecemos cursos técnicos e superiores nas áreas de desenvolvimento de software.</p>
+    </div>
+  );
+}
+
+function Cursos() {
+  const cursosTecnicos = [
+    "Técnico em ADS",
+    "Técnico em Front-End",
+    "Técnico em Back-End"
+  ];
+  const cursosSuperiores = [
+    "ADS",
+    "Ciência da Computação",
+    "Engenharia de Software"
+  ];
+
+  return (
+    <div className="p-6">
+      <h2 className="text-2xl font-semibold mb-4">Cursos Técnicos</h2>
+      <ul className="list-disc list-inside mb-6">
+        {cursosTecnicos.map((curso, idx) => (
+          <li key={idx}>{curso}</li>
+        ))}
+      </ul>
+      <h2 className="text-2xl font-semibold mb-4">Cursos Superiores</h2>
+      <ul className="list-disc list-inside">
+        {cursosSuperiores.map((curso, idx) => (
+          <li key={idx}>{curso}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function Sobre() {
+  return (
+    <div className="p-6">
+      <h2 className="text-2xl font-semibold mb-4">Quem Somos</h2>
+      <p>Somos uma instituição focada em formar profissionais de excelência na área da tecnologia da informação.</p>
+    </div>
+  );
+}
+
+function TrabalheConosco() {
+  return (
+    <div className="p-6">
+      <h2 className="text-2xl font-semibold mb-4">Trabalhe Conosco</h2>
+      <p>Envie seu currículo para nosso banco de talentos e venha fazer parte da nossa equipe!</p>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <nav className="bg-blue-600 p-4 text-white flex gap-4">
+        <Link to="/">Início</Link>
+        <Link to="/cursos">Cursos</Link>
+        <Link to="/sobre">Quem Somos</Link>
+        <Link to="/trabalhe-conosco">Trabalhe Conosco</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/cursos" element={<Cursos />} />
+        <Route path="/sobre" element={<Sobre />} />
+        <Route path="/trabalhe-conosco" element={<TrabalheConosco />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
